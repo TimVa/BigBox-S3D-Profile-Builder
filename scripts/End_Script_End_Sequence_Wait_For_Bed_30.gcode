@@ -6,7 +6,7 @@ M104 S0 ; turn off extruder
 M84 ; disable steppers
 M106 S0 ; disable cooling fans
 
-M140 R30 ; wait for bed to reach 30° C
+M140 R30 ; wait for bed to reach 30C
 M140 S0 ; turn off bed
 
 M117 Print complete
