@@ -122,7 +122,7 @@
             <xsl:value-of
                 select="translate(unparsed-text('scripts/Purge_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
             <xsl:value-of
-                select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Single.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
+                select="replace(translate(unparsed-text('scripts/Tool_Change_Script_End_Sequence.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
             />
         </endingGcode>
     </xsl:template>
