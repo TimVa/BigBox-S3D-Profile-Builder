@@ -6,31 +6,29 @@
     
     <xsl:include href="scripts/Sequence_Builder.xsl"/>
 
-    <xsl:variable name="version">BigBox Hybrid-Dual</xsl:variable>
+    <xsl:variable name="version">BigBox Dual</xsl:variable>
     <xsl:variable name="SetValues">
-        <xsl:call-template name="SetValuesDual">
-            <xsl:with-param name="offsetX">38</xsl:with-param>
-            <xsl:with-param name="offsetY">0</xsl:with-param>
-            <xsl:with-param name="stepsE">417.5</xsl:with-param>
+        <xsl:call-template name="SetValuesSingle">
+            <xsl:with-param name="stepsE">304</xsl:with-param>
         </xsl:call-template>
     </xsl:variable>
     <xsl:variable name="DockSequence">
         <xsl:call-template name="DockSequence">
             <xsl:with-param name="dockX">70</xsl:with-param>
-            <xsl:with-param name="dockY">235</xsl:with-param>
+            <xsl:with-param name="dockY">240</xsl:with-param>
             <xsl:with-param name="dockYpre">200</xsl:with-param>
         </xsl:call-template>
     </xsl:variable>    
     <xsl:variable name="UndockSequence">
         <xsl:call-template name="UndockSequence">
             <xsl:with-param name="undockX">80</xsl:with-param>
-            <xsl:with-param name="undockY">235</xsl:with-param>
+            <xsl:with-param name="undockY">240</xsl:with-param>
             <xsl:with-param name="undockYpost">200</xsl:with-param>
         </xsl:call-template>
     </xsl:variable>
 
     <xsl:template match="/">
-        <xsl:result-document href="./profiles/{$version}.fff">
+        <xsl:result-document href="profiles/{$version}.fff">
             <xsl:apply-templates/>
         </xsl:result-document>
     </xsl:template>
@@ -55,52 +53,16 @@
         </xsl:attribute>
     </xsl:template>
 
-    <xsl:template match="printExtruders">
-        <printExtruders>
-            <xsl:value-of select="'Extruder 1 (right) only'"/>
-        </printExtruders>
-    </xsl:template>
-
-    <xsl:template
-        match="profile/primaryExtruder | profile/raftExtruder | profile/skirtExtruder | profile/infillExtruder | profile/supportExtruder">
-        <xsl:element name="{local-name()}">
-            <xsl:value-of select="'1'"/>
-        </xsl:element>
-    </xsl:template>
-
-    <xsl:template match="strokeXoverride">
-        <strokeXoverride>
-            <xsl:value-of select="'300'"/>
-        </strokeXoverride>
-    </xsl:template>
-
-    <xsl:template
-        match="profile/extruder/@name | profile/temperatureController/@name | profile/toggleTemperatureController/@name | autoConfigureMaterial/temperatureController/@name">
-        <xsl:attribute name="name">
-            <xsl:choose>
-                <xsl:when test="../@name = 'Extruder 0 (left)'">
-                    <xsl:value-of select="'Extruder 1 (right)'"/>
-                </xsl:when>
-                <xsl:when test="../@name = 'Extruder 1 (right)'">
-                    <xsl:value-of select="'Extruder 0 (left)'"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="."/>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:attribute>
-    </xsl:template>
-
     <xsl:template match="profile/startingGcode">
         <startingGcode>
             <xsl:value-of
-                select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_T0.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
             <xsl:value-of select="$SetValues"/>
             <xsl:value-of select="$DockSequence"/>
             <xsl:value-of
-                select="translate(unparsed-text('scripts/Heat_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
+                select="translate(unparsed-text('scripts/Heat_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
             <xsl:value-of
-                select="translate(unparsed-text('scripts/Prime_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
+                select="translate(unparsed-text('scripts/Prime_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
             <xsl:value-of select="$UndockSequence"/>
             <xsl:value-of
                 select="replace(translate(unparsed-text('scripts/Start_Script_End_Sequence.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
@@ -165,7 +127,7 @@
                 select="replace(translate(unparsed-text('scripts/End_Script_Start_Sequence.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
             <xsl:value-of select="$DockSequence"/>
             <xsl:value-of
-                select="translate(unparsed-text('scripts/Purge_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
+                select="translate(unparsed-text('scripts/Purge_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
             <xsl:value-of
                 select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
             />
@@ -228,36 +190,6 @@
                 select="replace(translate(unparsed-text('scripts/Tool_Change_Script_End_Sequence.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
             />
         </toolChangeGcode>
-    </xsl:template>
-
-    <xsl:template
-        match="autoConfigureMaterial/@name[contains(../@name, 'right') and contains(../@name, 'left')]">
-        <xsl:attribute name="name">
-            <xsl:value-of
-                select="replace(replace(replace(../@name, 'right', 'xxx'), 'left', 'right'), 'xxx', 'left')"
-            />
-        </xsl:attribute>
-    </xsl:template>
-
-    <xsl:template
-        match="autoConfigureExtruders/primaryExtruder | autoConfigureExtruders/raftExtruder | autoConfigureExtruders/skirtExtruder | autoConfigureExtruders/infillExtruder | autoConfigureExtruders/supportExtruder">
-        <xsl:choose>
-            <xsl:when test="contains(../@name, 'Both') and . = '0'">
-                <xsl:element name="{local-name()}">
-                    <xsl:value-of select="'1'"/>
-                </xsl:element>
-            </xsl:when>
-            <xsl:when test="contains(../@name, 'Both') and . = '1'">
-                <xsl:element name="{local-name()}">
-                    <xsl:value-of select="'0'"/>
-                </xsl:element>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:element name="{local-name()}">
-                    <xsl:value-of select="."/>
-                </xsl:element>
-            </xsl:otherwise>
-        </xsl:choose>
     </xsl:template>
 
 </xsl:stylesheet>

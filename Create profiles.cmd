@@ -1,1 +1,1 @@
-for %%i in (*.xsl) do .\bin\Transform.exe ".\profiles\BigBox Dual.fff" "%%i"
+for %%i in (*.xsl) do .\bin\Transform.exe ".\profiles\BigBox Base.fff" "%%i"
