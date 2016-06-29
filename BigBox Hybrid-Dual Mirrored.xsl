@@ -120,13 +120,13 @@
             <xsl:when test="contains(../@name, 'left')">
                 <startingGcode>
                     <xsl:value-of
-                        select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                        select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_T0.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
                     <xsl:value-of select="$SetValues"/>
                     <xsl:value-of select="$DockSequence"/>
                     <xsl:value-of
-                        select="translate(unparsed-text('scripts/Heat_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
+                        select="translate(unparsed-text('scripts/Heat_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
                     <xsl:value-of
-                        select="translate(unparsed-text('scripts/Prime_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
+                        select="translate(unparsed-text('scripts/Prime_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
                     <xsl:value-of select="$UndockSequence"/>
                     <xsl:value-of
                         select="replace(translate(unparsed-text('scripts/Start_Script_End_Sequence.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
@@ -136,13 +136,13 @@
             <xsl:when test="contains(../@name, 'right')">
                 <startingGcode>
                     <xsl:value-of
-                        select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_T0.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                        select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
                     <xsl:value-of select="$SetValues"/>
                     <xsl:value-of select="$DockSequence"/>
                     <xsl:value-of
-                        select="translate(unparsed-text('scripts/Heat_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
+                        select="translate(unparsed-text('scripts/Heat_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
                     <xsl:value-of
-                        select="translate(unparsed-text('scripts/Prime_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
+                        select="translate(unparsed-text('scripts/Prime_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
                     <xsl:value-of select="$UndockSequence"/>
                     <xsl:value-of
                         select="replace(translate(unparsed-text('scripts/Start_Script_End_Sequence.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
@@ -187,7 +187,7 @@
                         select="replace(translate(unparsed-text('scripts/End_Script_Start_Sequence.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
                     <xsl:value-of select="$DockSequence"/>
                     <xsl:value-of
-                        select="translate(unparsed-text('scripts/Purge_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
+                        select="translate(unparsed-text('scripts/Purge_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
                     <xsl:value-of
                         select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
                     />
@@ -199,7 +199,7 @@
                         select="replace(translate(unparsed-text('scripts/End_Script_Start_Sequence.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
                     <xsl:value-of select="$DockSequence"/>
                     <xsl:value-of
-                        select="translate(unparsed-text('scripts/Purge_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
+                        select="translate(unparsed-text('scripts/Purge_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
                     <xsl:value-of
                         select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
                     />
