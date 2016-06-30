@@ -681,8 +681,6 @@
       <setpoint layer="5" speed="20"/>
       <setpoint layer="6" speed="25"/>
       <setpoint layer="7" speed="30"/>
-      <setpoint layer="8" speed="35"/>
-      <setpoint layer="9" speed="40"/>
     </fanSpeed>
     <adjustSpeedForCooling>1</adjustSpeedForCooling>
     <minSpeedLayerTime>15</minSpeedLayerTime>
