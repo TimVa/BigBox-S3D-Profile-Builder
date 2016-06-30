@@ -6,7 +6,7 @@
 
     <xsl:param name="PEIPlate">0</xsl:param>
 
-    <xsl:include href="PEIPlateTemps.xsl"/>
+    <xsl:include href="scripts/PEIPlateTemps.xsl"/>
     <xsl:include href="scripts/Sequence_Builder.xsl"/>
 
     <xsl:variable name="version">BigBox Hybrid-Dual Mirrored</xsl:variable>
