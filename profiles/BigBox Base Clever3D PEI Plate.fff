@@ -628,7 +628,7 @@
       <relayBetweenLayers>0</relayBetweenLayers>
       <relayBetweenLoops>0</relayBetweenLoops>
       <stabilizeAtStartup>1</stabilizeAtStartup>
-      <setpoint layer="1" temperature="60"/>
+      <setpoint layer="1" temperature="55"/>
     </temperatureController>
     <minBridgingArea>15</minBridgingArea>
     <bridgingExtraInflation>0.5</bridgingExtraInflation>
@@ -681,8 +681,6 @@
       <setpoint layer="5" speed="20"/>
       <setpoint layer="6" speed="25"/>
       <setpoint layer="7" speed="30"/>
-      <setpoint layer="8" speed="35"/>
-      <setpoint layer="9" speed="40"/>
     </fanSpeed>
     <adjustSpeedForCooling>1</adjustSpeedForCooling>
     <minSpeedLayerTime>15</minSpeedLayerTime>
@@ -714,7 +712,7 @@
       <relayBetweenLayers>0</relayBetweenLayers>
       <relayBetweenLoops>0</relayBetweenLoops>
       <stabilizeAtStartup>1</stabilizeAtStartup>
-      <setpoint layer="1" temperature="70"/>
+      <setpoint layer="1" temperature="80"/>
     </temperatureController>
     <minBridgingArea>15</minBridgingArea>
     <bridgingExtraInflation>0.5</bridgingExtraInflation>
