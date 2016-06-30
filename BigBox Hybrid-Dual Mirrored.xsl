@@ -3,9 +3,10 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
     <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
     <xsl:strip-space elements="*"/>
-    
-    <xsl:param name="waitForBed30">0</xsl:param>
-    
+
+    <xsl:param name="PEIPlate">0</xsl:param>
+
+    <xsl:include href="PEIPlateTemps.xsl"/>
     <xsl:include href="scripts/Sequence_Builder.xsl"/>
 
     <xsl:variable name="version">BigBox Hybrid-Dual Mirrored</xsl:variable>
@@ -22,7 +23,7 @@
             <xsl:with-param name="dockY">235</xsl:with-param>
             <xsl:with-param name="dockYpre">200</xsl:with-param>
         </xsl:call-template>
-    </xsl:variable>    
+    </xsl:variable>
     <xsl:variable name="UndockSequence">
         <xsl:call-template name="UndockSequence">
             <xsl:with-param name="undockX">110</xsl:with-param>
@@ -162,15 +163,15 @@
             <xsl:value-of
                 select="translate(unparsed-text('scripts/Purge_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
             <xsl:choose>
-                <xsl:when test="$waitForBed30=0">
+                <xsl:when test="$PEIPlate = 0">
                     <xsl:value-of
                         select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-                    />                            
+                    />
                 </xsl:when>
-                <xsl:when test="$waitForBed30=1">
+                <xsl:when test="$PEIPlate = 1">
                     <xsl:value-of
                         select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual_Wait_For_Bed_30.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-                    />                            
+                    />
                 </xsl:when>
             </xsl:choose>
         </endingGcode>
@@ -188,15 +189,15 @@
                     <xsl:value-of
                         select="translate(unparsed-text('scripts/Purge_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
                     <xsl:choose>
-                        <xsl:when test="$waitForBed30=0">
+                        <xsl:when test="$PEIPlate = 0">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-                            />                            
+                            />
                         </xsl:when>
-                        <xsl:when test="$waitForBed30=1">
+                        <xsl:when test="$PEIPlate = 1">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual_Wait_For_Bed_30.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-                            />                            
+                            />
                         </xsl:when>
                     </xsl:choose>
                 </endingGcode>
@@ -209,15 +210,15 @@
                     <xsl:value-of
                         select="translate(unparsed-text('scripts/Purge_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
                     <xsl:choose>
-                        <xsl:when test="$waitForBed30=0">
+                        <xsl:when test="$PEIPlate = 0">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-                            />                            
+                            />
                         </xsl:when>
-                        <xsl:when test="$waitForBed30=1">
+                        <xsl:when test="$PEIPlate = 1">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual_Wait_For_Bed_30.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-                            />                            
+                            />
                         </xsl:when>
                     </xsl:choose>
                 </endingGcode>
@@ -230,15 +231,15 @@
                     <xsl:value-of
                         select="translate(unparsed-text('scripts/Purge_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
                     <xsl:choose>
-                        <xsl:when test="$waitForBed30=0">
+                        <xsl:when test="$PEIPlate = 0">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-                            />                            
+                            />
                         </xsl:when>
-                        <xsl:when test="$waitForBed30=1">
+                        <xsl:when test="$PEIPlate = 1">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual_Wait_For_Bed_30.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-                            />                            
+                            />
                         </xsl:when>
                     </xsl:choose>
                 </endingGcode>
@@ -286,4 +287,5 @@
             </xsl:choose>
         </xsl:attribute>
     </xsl:template>
+
 </xsl:stylesheet>
