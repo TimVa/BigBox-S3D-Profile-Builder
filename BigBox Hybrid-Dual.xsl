@@ -4,6 +4,8 @@
     <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
     <xsl:strip-space elements="*"/>
     
+    <xsl:param name="waitForBed30">0</xsl:param>
+    
     <xsl:include href="scripts/Sequence_Builder.xsl"/>
 
     <xsl:variable name="version">BigBox Hybrid-Dual</xsl:variable>
@@ -166,9 +168,18 @@
             <xsl:value-of select="$DockSequence"/>
             <xsl:value-of
                 select="translate(unparsed-text('scripts/Purge_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
-            <xsl:value-of
-                select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-            />
+            <xsl:choose>
+                <xsl:when test="$waitForBed30=0">
+                    <xsl:value-of
+                        select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
+                    />                            
+                </xsl:when>
+                <xsl:when test="$waitForBed30=1">
+                    <xsl:value-of
+                        select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual_Wait_For_Bed_30.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
+                    />                            
+                </xsl:when>
+            </xsl:choose>
         </endingGcode>
     </xsl:template>
 
@@ -183,9 +194,18 @@
                         select="translate(unparsed-text('scripts/Purge_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
                     <xsl:value-of
                         select="translate(unparsed-text('scripts/Purge_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
-                    <xsl:value-of
-                        select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-                    />
+                    <xsl:choose>
+                        <xsl:when test="$waitForBed30=0">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
+                            />                            
+                        </xsl:when>
+                        <xsl:when test="$waitForBed30=1">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual_Wait_For_Bed_30.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
+                            />                            
+                        </xsl:when>
+                    </xsl:choose>
                 </endingGcode>
             </xsl:when>
             <xsl:when test="contains(../@name, 'left')">
@@ -195,9 +215,18 @@
                     <xsl:value-of select="$DockSequence"/>
                     <xsl:value-of
                         select="translate(unparsed-text('scripts/Purge_Sequence_T0.gcode'), '&#xD;&#xA;', ',')"/>
-                    <xsl:value-of
-                        select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-                    />
+                    <xsl:choose>
+                        <xsl:when test="$waitForBed30=0">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
+                            />                            
+                        </xsl:when>
+                        <xsl:when test="$waitForBed30=1">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual_Wait_For_Bed_30.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
+                            />                            
+                        </xsl:when>
+                    </xsl:choose>
                 </endingGcode>
             </xsl:when>
             <xsl:when test="contains(../@name, 'right')">
@@ -207,9 +236,18 @@
                     <xsl:value-of select="$DockSequence"/>
                     <xsl:value-of
                         select="translate(unparsed-text('scripts/Purge_Sequence_T1.gcode'), '&#xD;&#xA;', ',')"/>
-                    <xsl:value-of
-                        select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
-                    />
+                    <xsl:choose>
+                        <xsl:when test="$waitForBed30=0">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
+                            />                            
+                        </xsl:when>
+                        <xsl:when test="$waitForBed30=1">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/End_Script_End_Sequence_Dual_Wait_For_Bed_30.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"
+                            />                            
+                        </xsl:when>
+                    </xsl:choose>
                 </endingGcode>
             </xsl:when>
         </xsl:choose>
