@@ -172,8 +172,8 @@
   <firmwareTypeOverride>RepRap (Marlin/Repetier/Sprinter)</firmwareTypeOverride>
   <GPXconfigOverride>r2</GPXconfigOverride>
   <baudRateOverride>115200</baudRateOverride>
-  <overridePrinterModels>0</overridePrinterModels>
-  <printerModelsOverride></printerModelsOverride>
+  <overridePrinterModels>1</overridePrinterModels>
+  <printerModelsOverride>BigBoxBedAssembly.stl</printerModelsOverride>
   <startingGcode/>
   <layerChangeGcode/>
   <retractionGcode/>
