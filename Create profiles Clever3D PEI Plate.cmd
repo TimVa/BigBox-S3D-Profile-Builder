@@ -1,1 +1,0 @@
-for %%i in (*.xsl) do .\bin\Transform.exe ".\profiles\BigBox Base Clever3D PEI Plate.fff" "%%i" "PEIPlate=1"
