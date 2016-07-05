@@ -77,23 +77,6 @@
         </strokeXoverride>
     </xsl:template>
 
-    <xsl:template
-        match="profile/extruder/@name | profile/temperatureController/@name | profile/toggleTemperatureController/@name | autoConfigureMaterial/temperatureController/@name">
-        <xsl:attribute name="name">
-            <xsl:choose>
-                <xsl:when test="../@name = 'Extruder 0 (left)'">
-                    <xsl:value-of select="'Extruder 1 (right)'"/>
-                </xsl:when>
-                <xsl:when test="../@name = 'Extruder 1 (right)'">
-                    <xsl:value-of select="'Extruder 0 (left)'"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="."/>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:attribute>
-    </xsl:template>
-
     <xsl:template match="profile/startingGcode">
         <startingGcode>
             <xsl:value-of
