@@ -13,7 +13,7 @@
     <xsl:variable name="SetValues">
         <xsl:call-template name="SetValuesDual">
             <xsl:with-param name="offsetX">29.5</xsl:with-param>
-            <xsl:with-param name="offsetY">18.1</xsl:with-param>
+            <xsl:with-param name="offsetY">-18.1</xsl:with-param>
             <xsl:with-param name="stepsE">417.5</xsl:with-param>
         </xsl:call-template>
     </xsl:variable>
