@@ -3,7 +3,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
     <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
     <xsl:strip-space elements="*"/>
-
+    
+    <xsl:param name="Leveling">ABL</xsl:param>
     <xsl:param name="PEIPlate">0</xsl:param>
 
     <xsl:include href="scripts/PEIPlateTemps.xsl"/>
@@ -79,8 +80,18 @@
 
     <xsl:template match="profile/startingGcode">
         <startingGcode>
-            <xsl:value-of
-                select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+            <xsl:choose>
+                <xsl:when test="$Leveling = 'ABL'">
+                    <xsl:value-of
+                        select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_ABL_T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                    <xsl:value-of select="$SetValues"/>
+                </xsl:when>
+                <xsl:when test="$Leveling = 'MBL'">
+                    <xsl:value-of
+                        select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_MBL_T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                    <xsl:value-of select="$SetValues"/>
+                </xsl:when>
+            </xsl:choose>
             <xsl:value-of select="$SetValues"/>
             <xsl:value-of select="$DockSequence"/>
             <xsl:value-of
@@ -98,8 +109,18 @@
         <xsl:choose>
             <xsl:when test="contains(../@name, 'Both')">
                 <startingGcode>
-                    <xsl:value-of
-                        select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_T0+T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                    <xsl:choose>
+                        <xsl:when test="$Leveling = 'ABL'">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_ABL_T0+T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                            <xsl:value-of select="$SetValues"/>
+                        </xsl:when>
+                        <xsl:when test="$Leveling = 'MBL'">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_MBL_T0+T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                            <xsl:value-of select="$SetValues"/>
+                        </xsl:when>
+                    </xsl:choose>
                     <xsl:value-of select="$SetValues"/>
                     <xsl:value-of select="$DockSequence"/>
                     <xsl:value-of
@@ -112,8 +133,18 @@
             </xsl:when>
             <xsl:when test="contains(../@name, 'left')">
                 <startingGcode>
-                    <xsl:value-of
-                        select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_T0.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                    <xsl:choose>
+                        <xsl:when test="$Leveling = 'ABL'">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_ABL_T0.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                            <xsl:value-of select="$SetValues"/>
+                        </xsl:when>
+                        <xsl:when test="$Leveling = 'MBL'">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_MBL_T0.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                            <xsl:value-of select="$SetValues"/>
+                        </xsl:when>
+                    </xsl:choose>
                     <xsl:value-of select="$SetValues"/>
                     <xsl:value-of select="$DockSequence"/>
                     <xsl:value-of
@@ -128,8 +159,18 @@
             </xsl:when>
             <xsl:when test="contains(../@name, 'right')">
                 <startingGcode>
-                    <xsl:value-of
-                        select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                    <xsl:choose>
+                        <xsl:when test="$Leveling = 'ABL'">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_ABL_T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                            <xsl:value-of select="$SetValues"/>
+                        </xsl:when>
+                        <xsl:when test="$Leveling = 'MBL'">
+                            <xsl:value-of
+                                select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_MBL_T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
+                            <xsl:value-of select="$SetValues"/>
+                        </xsl:when>
+                    </xsl:choose>
                     <xsl:value-of select="$SetValues"/>
                     <xsl:value-of select="$DockSequence"/>
                     <xsl:value-of
