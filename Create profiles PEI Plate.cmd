@@ -1,1 +1,0 @@
-for %%i in (*.xsl) do .\bin\Transform.exe ".\profiles\BigBox Base.fff" "%%i" "PEIPlate=1"
