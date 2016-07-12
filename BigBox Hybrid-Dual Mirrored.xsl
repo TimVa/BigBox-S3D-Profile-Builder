@@ -94,12 +94,10 @@
                 <xsl:when test="$Leveling = 'ABL'">
                     <xsl:value-of
                         select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_ABL_T0.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
-                    <xsl:value-of select="$SetValues"/>
                 </xsl:when>
                 <xsl:when test="$Leveling = 'MBL'">
                     <xsl:value-of
                         select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_MBL_T0.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
-                    <xsl:value-of select="$SetValues"/>
                 </xsl:when>
             </xsl:choose>
             <xsl:value-of select="$DockSequence"/>
@@ -122,12 +120,10 @@
                         <xsl:when test="$Leveling = 'ABL'">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_ABL_T0+T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
-                            <xsl:value-of select="$SetValues"/>
                         </xsl:when>
                         <xsl:when test="$Leveling = 'MBL'">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_MBL_T0+T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
-                            <xsl:value-of select="$SetValues"/>
                         </xsl:when>
                     </xsl:choose>
                     <xsl:value-of select="$SetValues"/>
@@ -146,12 +142,10 @@
                         <xsl:when test="$Leveling = 'ABL'">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_ABL_T0.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
-                            <xsl:value-of select="$SetValues"/>
                         </xsl:when>
                         <xsl:when test="$Leveling = 'MBL'">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_MBL_T0.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
-                            <xsl:value-of select="$SetValues"/>
                         </xsl:when>
                     </xsl:choose>
                     <xsl:value-of select="$SetValues"/>
@@ -172,12 +166,10 @@
                         <xsl:when test="$Leveling = 'ABL'">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_ABL_T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
-                            <xsl:value-of select="$SetValues"/>
                         </xsl:when>
                         <xsl:when test="$Leveling = 'MBL'">
                             <xsl:value-of
                                 select="replace(translate(unparsed-text('scripts/Start_Script_Start_Sequence_MBL_T1.gcode'), '&#xD;&#xA;', ','), '\[Version\]', $version)"/>
-                            <xsl:value-of select="$SetValues"/>
                         </xsl:when>
                     </xsl:choose>
                     <xsl:value-of select="$SetValues"/>
