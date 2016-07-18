@@ -59,7 +59,7 @@
 
     <!-- Colorfabb XT -->
     <xsl:template
-        match="autoConfigureMaterial[@name = 'Colorfabb XT']/temperatureController[@name = 'Heated Bed']/setpoint[@layer = '1']/@temperature">
+        match="autoConfigureMaterial[@name = 'Colorfabb XT']/temperatureController[@name = 'Heated Bed']/setpoint">
         <xsl:choose>
             <xsl:when test="$PEIPlate = 1">
                 <xsl:element name="setpoint">
@@ -87,7 +87,7 @@
 
     <!-- spoolWorks Edge -->
     <xsl:template
-        match="autoConfigureMaterial[@name = 'spoolWorks Edge']/temperatureController[@name = 'Heated Bed']">
+        match="autoConfigureMaterial[@name = 'spoolWorks Edge']/temperatureController[@name = 'Heated Bed']/setpoint">
         <xsl:choose>
             <xsl:when test="$PEIPlate = 1">
                 <xsl:element name="setpoint">
