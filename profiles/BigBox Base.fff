@@ -1197,7 +1197,7 @@
     <minFanLayerTime>45</minFanLayerTime>
     <maxCoolingFanSpeed>80</maxCoolingFanSpeed>
     <increaseFanForBridging>1</increaseFanForBridging>
-    <bridgingFanSpeed>80</bridgingFanSpeed>
+    <bridgingFanSpeed>30</bridgingFanSpeed>
     <temperatureController name="Extruder 0 (left)">
       <temperatureNumber>0</temperatureNumber>
       <isHeatedBed>0</isHeatedBed>
